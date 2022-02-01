@@ -8,27 +8,27 @@ function DeckCard({ name, desc }) {
   return (
     <div className="card">
       <div className="card-body">
-        <div>
-          <h3 className="card-title">{name}</h3>
-          <p>{/* TODO: number of cards */} cards</p>
+        <div className="row">
+          <h3 className="col card-title">{name}</h3>
+          <p className="col-1">{/* TODO: number of cards */} cards</p>
         </div>
         <p className="card-text">{desc}</p>
-        <div>
+        <div className="row">
           <button 
             type="button" 
-            className="btn btn-secondary" 
+            className="btn btn-secondary ml-3" 
             onClick={() => history.push(`/decks/:deckId`)} 
             >View
           </button>
           <button 
             type="button" 
-            className="btn btn-primary" 
+            className="btn btn-primary ml-3" 
             onClick={() => history.push(`/decks/:deckId/study`)} 
             >Study
           </button>
           <button 
             type="button" 
-            className="btn btn-primary" 
+            className="btn btn-danger ml-3" 
             onClick={() => history.push(`/decks/new`)} 
             >Delete
           </button>
