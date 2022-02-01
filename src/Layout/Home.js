@@ -25,7 +25,7 @@ function Home() {
         onClick={() => history.push(`/decks/new`)} 
         >+ Create Deck
       </button>
-      <ul>{deckCards}</ul>
+      <div className="card-list">{deckCards}</div>
     </div>
   );
 }
