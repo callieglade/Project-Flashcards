@@ -10,7 +10,7 @@ function Home() {
     const abortController = new AbortController();
     listDecks(abortController.signal).then(setDeckList);
     return () => abortController.abort();
-  }, [deckList]);
+  }, []);
 
   const navigate = (destination) => {
     const history = useHistory();
