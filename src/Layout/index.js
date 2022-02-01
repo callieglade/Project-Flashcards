@@ -20,7 +20,7 @@ function Layout() {
           <Route path={`/decks/new`}>
             <NewDeck />
           </Route>
-          <Route path={`/decks/:deckId`}>
+          <Route exact path={`/decks/:deckId`}>
             <Deck />
           </Route>
           <Route path={`/decks/:deckId/study`}>

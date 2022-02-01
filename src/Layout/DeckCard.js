@@ -27,13 +27,13 @@ function DeckCard({ deck }) {
           <button 
             type="button" 
             className="btn btn-secondary ml-3" 
-            onClick={() => history.push(`/decks/:deckId`)} 
+            onClick={() => history.push(`/decks/${id}`)} 
             >View
           </button>
           <button 
             type="button" 
             className="btn btn-primary ml-3" 
-            onClick={() => history.push(`/decks/:deckId/study`)} 
+            onClick={() => history.push(`/decks/${id}/study`)} 
             >Study
           </button>
           <button 
