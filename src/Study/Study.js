@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { readDeck } from "../utils/api";
 
 function Study() {
   const [deck, setDeck] = useState({});
   const { deckId } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -13,7 +14,17 @@ function Study() {
   }, []);
 
   return (
-    <p>Study component placeholder</p>
+    <div>
+      <nav aria-label="breadcrumb">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item text-primary" onClick={() => history.push(`/`)}>Home</li>
+          <li className="breadcrumb-item text-primary" onClick={() => history.push(`/decks/${deckId}`)}>{deck.name}</li>
+          <li className="breadcrumb-item active">Study</li>
+        </ol>
+      </nav>
+      <p>Study component placeholder</p>
+    </div>
+    
   );
 }
 
