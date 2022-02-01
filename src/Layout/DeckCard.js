@@ -1,18 +1,18 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-function DeckCard({ name, desc }) {
+function DeckCard({ deck }) {
   const history = useHistory();
-  // TODO: Add Flexbox & Boostrap 4 classes to each element
+  const { name, description, cards } = deck;
 
   return (
     <div className="card">
       <div className="card-body">
         <div className="row">
           <h3 className="col card-title">{name}</h3>
-          <p className="col-1">{/* TODO: number of cards */} cards</p>
+          <p className="col-1">{cards.length} cards</p>
         </div>
-        <p className="card-text">{desc}</p>
+        <p className="card-text">{description}</p>
         <div className="row">
           <button 
             type="button" 

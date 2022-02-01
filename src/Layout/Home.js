@@ -14,7 +14,7 @@ function Home() {
   }, []);
 
   const deckCards = deckList.map((deck) => (
-    <DeckCard key={deck.id} name={deck.name} desc={deck.description} />
+    <DeckCard key={deck.id} deck={deck} />
   ));
 
   return (
