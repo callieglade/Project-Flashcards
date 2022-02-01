@@ -22,9 +22,8 @@ function Study() {
           <li className="breadcrumb-item active">Study</li>
         </ol>
       </nav>
-      <p>Study component placeholder</p>
+      <h2>Study: {deck.name}</h2>
     </div>
-    
   );
 }
 
