@@ -25,6 +25,7 @@ function Home() {
     <div>
       <button 
         type="button" 
+        className="btn btn-primary" 
         onClick={navigate(`/decks/new`)} 
         >+ Create Deck
       </button>
