@@ -10,7 +10,16 @@ function Layout() {
       <div className="container">
         {/* TODO: Implement the screen starting here */}
         <Switch>
-          <Route>
+        <Route path={`/decks/new`}>
+            <NewDeck />
+          </Route>
+          <Route path={`/decks/:deckId`}>
+            <Deck />
+          </Route>
+          <Route path={`/decks/:deckId/study`}>
+            <Study />
+          </Route>
+          <Route exact path={`/`}>
             <DeckList />
           </Route>
           <Route>
