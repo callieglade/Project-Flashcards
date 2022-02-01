@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { listDecks } from "../utils/api";
 import DeckCard from "./DeckCard";
 
@@ -11,13 +12,22 @@ function Home() {
     return () => abortController.abort();
   }, [deckList]);
 
+  const navigate = (destination) => {
+    const history = useHistory();
+    history.push(destination);
+  }
+
   const deckCards = deckList.map((deck) => (
     <DeckCard key={deck.id} name={deck.name} desc={deck.description} />
   ));
 
   return (
     <div>
-      <button onClick={createDeck}>+ Create Deck</button>
+      <button 
+        type="button" 
+        onClick={navigate(`/decks/new`)} 
+        >+ Create Deck
+      </button>
       <ul>{deckCards}</ul>
     </div>
   );
