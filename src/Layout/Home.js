@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { listDecks } from "../utils/api";
 import DeckCard from "./DeckCard";
 
-function DeckList() {
+function Home() {
   const [deckList, setDeckList] = useState([]);
 
   useEffect(() => {
@@ -23,4 +23,4 @@ function DeckList() {
   );
 }
 
-export default DeckList;
+export default Home;
