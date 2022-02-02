@@ -2,9 +2,9 @@ import React from "react";
 import { Route, Switch } from "react-router";
 import Header from "./Header";
 import Home from "./Home";
-import Deck from "../Deck/Deck";
-import NewDeck from "../NewDeck/NewDeck";
-import Study from "../Study/Study";
+import Deck from "../Deck";
+import NewDeck from "../NewDeck";
+import Study from "../Study";
 import NotFound from "./NotFound";
 
 function Layout() {
