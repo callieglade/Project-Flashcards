@@ -14,7 +14,7 @@ function Deck({ deck, setDeck }) {
   }, [deckId]);
 
   if ( deck.id === 0 ) return <p>Loading...</p>;
-  
+
   const cardList = deck.cards.map((card) => (
     <Card key={card.id} card={card} />
   ));
@@ -24,7 +24,7 @@ function Deck({ deck, setDeck }) {
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
           <li className="breadcrumb-item text-primary" onClick={() => history.push(`/`)}>Home</li>
-          <li className="breadcrumb-item active">Deck Name</li>
+          <li className="breadcrumb-item active">{deck.name}</li>
         </ol>
       </nav>
       <div>
