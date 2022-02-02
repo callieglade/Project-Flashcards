@@ -23,25 +23,25 @@ function StudyCard({ deck }) {
       <div>
         <h3>Not enough cards.</h3>
         <p>You need at least 3 cards to use study mode. There are only {cards.length} cards in this deck.</p>
-        <button type="button" onClick={() => history.push(`/decks/${id}/cards/new`)}>+ Add Cards</button>
+        <button type="button" className="btn btn-primary" onClick={() => history.push(`/decks/${id}/cards/new`)}>+ Add Cards</button>
       </div>
     );
   } else {
     return (
       <div className="card">
         <div className="card-body">
-          <div className="card-title">Card {card.id} of {cards.length}</div>
+          <h4 className="card-title">Card {card.id} of {cards.length}</h4>
           <div className="card-text">{isFlipped ? card.back : card.front}</div>
           <div className="row">
             <button 
               type="button"
-              className="btn btn-secondary"
+              className="btn btn-secondary m-3"
               onClick={() => setFlipped(!isFlipped)}
               >Flip
             </button>
             <button 
               type="button"
-              className="btn btn-primary"
+              className="btn btn-primary my-3"
               hidden={!isFlipped}
               onClick={handleNext}
               >Next

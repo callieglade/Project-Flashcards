@@ -16,7 +16,7 @@ function DeckCard({ deck }) {
   }
 
   return (
-    <div className="card">
+    <div className="card my-3">
       <div className="card-body">
         <div className="row">
           <h3 className="col card-title">{name}</h3>
