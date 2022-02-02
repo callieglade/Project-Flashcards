@@ -20,7 +20,7 @@ function DeckCard({ deck }) {
       <div className="card-body">
         <div className="row">
           <h3 className="col card-title">{name}</h3>
-          <p className="col-1">{cards.length} cards</p>
+          <p className="col-2">{cards.length} cards</p>
         </div>
         <p className="card-text">{description}</p>
         <div className="row">
