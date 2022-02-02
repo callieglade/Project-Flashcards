@@ -11,7 +11,7 @@ function Study({ deck, setDeck }) {
     const abortController = new AbortController();
     readDeck(deckId, abortController.signal).then(setDeck);
     return () => abortController.abort();
-  }, [deckId]);
+  }, [deckId, setDeck]);
 
   if ( deck.id === 0 ) return <p>Loading...</p>;
   return (

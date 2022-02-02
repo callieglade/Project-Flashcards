@@ -3,7 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { readDeck } from "../utils/api";
 import Card from "./Card";
 
-function Deck({ deck, setDeck }) {
+function DeckLayout({ deck, setDeck }) {
   const history = useHistory();
   const { deckId } = useParams();
   
@@ -11,7 +11,7 @@ function Deck({ deck, setDeck }) {
     const abortController = new AbortController();
     readDeck(deckId, abortController.signal).then(setDeck);
     return () => abortController.abort();
-  }, [deckId]);
+  }, [deckId, setDeck]);
 
   if ( deck.id === 0 ) return <p>Loading...</p>;
 
@@ -43,4 +43,4 @@ function Deck({ deck, setDeck }) {
   );
 }
 
-export default Deck;
+export default DeckLayout;

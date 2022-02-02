@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Route, Switch } from "react-router";
 import Header from "./Header";
 import Home from "./Home";
-import Deck from "../Deck";
+import DeckLayout from "../Deck";
 import NewDeck from "../NewDeck";
 import Study from "../Study";
 import NotFound from "./NotFound";
@@ -23,7 +23,7 @@ function Layout() {
             <NewDeck />
           </Route>
           <Route exact path={`/decks/:deckId`}>
-            <Deck deck={deck} setDeck={setDeck} />
+            <DeckLayout deck={deck} setDeck={setDeck} />
           </Route>
           <Route path={`/decks/:deckId/study`}>
             <Study deck={deck} setDeck={setDeck} />
