@@ -13,10 +13,12 @@ function Deck({ deck, setDeck }) {
     return () => abortController.abort();
   }, [deckId]);
 
+  if ( deck.id === 0 ) return <p>Loading...</p>;
+  
   const cardList = deck.cards.map((card) => (
     <Card key={card.id} card={card} />
   ));
-
+  
   return (
     <div>
       <nav aria-label="breadcrumb">
