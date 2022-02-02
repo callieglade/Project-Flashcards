@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { readDeck } from "../utils/api";
+import Card from "./Card";
 
 function Deck({ deck, setDeck }) {
   const history = useHistory();
@@ -11,6 +12,10 @@ function Deck({ deck, setDeck }) {
     readDeck(deckId, abortController.signal).then(setDeck);
     return () => abortController.abort();
   }, [deckId]);
+
+  const cardList = deck.cards.map((card) => (
+    <Card key={card.id} card={card} />
+  ));
 
   return (
     <div>
@@ -30,6 +35,7 @@ function Deck({ deck, setDeck }) {
           <button type="button" className="btn btn-danger mr-3">Delete</button>
         </div>
         <h2 className="my-4">Cards</h2>
+        <div>{cardList}</div>
       </div>
     </div>
   );
