@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Switch } from "react-router";
 import Header from "./Header";
 import Home from "./Home";
@@ -8,6 +8,8 @@ import Study from "../Study";
 import NotFound from "./NotFound";
 
 function Layout() {
+  const [deck, setDeck] = useState({id: 0});
+
   return (
     <>
       <Header />
@@ -21,10 +23,10 @@ function Layout() {
             <NewDeck />
           </Route>
           <Route exact path={`/decks/:deckId`}>
-            <Deck />
+            <Deck deck={deck} setDeck={setDeck} />
           </Route>
           <Route path={`/decks/:deckId/study`}>
-            <Study />
+            <Study deck={deck} setDeck={setDeck} />
           </Route>
           <Route>
             <NotFound />
