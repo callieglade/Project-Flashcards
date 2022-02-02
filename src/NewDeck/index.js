@@ -7,11 +7,16 @@ function NewDeck() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const abortController = new AbortController();
+
     const formData = new FormData(e.target);
     const newDeck = {
       name: formData.get("name"),
       description: formData.get("description"),
     };
+
+    createDeck(newDeck, abortController.signal)
+    .then((deck) => history.push(`/decks/${deck.id}`));
   }
 
   return (
