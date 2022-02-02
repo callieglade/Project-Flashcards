@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 function StudyCard({ deck }) {
@@ -6,6 +6,17 @@ function StudyCard({ deck }) {
   const [card, setCard] = useState(cards[0]);
   const [isFlipped, setFlipped] = useState(false);
   const history = useHistory();
+
+  const handleNext = () => {
+    setFlipped(false);
+    if (card.id < cards.length) {
+      setCard(cards[card.id]);
+    } else {
+      if (window.confirm("Restart cards?\nClick 'Cancel' to return to the home page.")) {
+        setCard(cards[0])
+      } else history.push(`/`);
+    } 
+  }
 
   if (cards.length <= 2) {
     return (
@@ -32,7 +43,7 @@ function StudyCard({ deck }) {
               type="button"
               className="btn btn-primary"
               hidden={!isFlipped}
-              onClick={() => setFlipped(!isFlipped)}
+              onClick={handleNext}
               >Next
             </button>
           </div>
