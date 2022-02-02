@@ -28,6 +28,13 @@ function StudyCard({ deck }) {
               onClick={() => setFlipped(!isFlipped)}
               >Flip
             </button>
+            <button 
+              type="button"
+              className="btn btn-primary"
+              hidden={!isFlipped}
+              onClick={() => setFlipped(!isFlipped)}
+              >Next
+            </button>
           </div>
         </div>
       </div>
