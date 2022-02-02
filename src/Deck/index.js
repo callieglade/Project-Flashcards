@@ -1,9 +1,17 @@
-import React from "react";
-import { useHistory } from "react-router";
+import React, { useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { readDeck } from "../utils/api";
 
-function Deck() {
+function Deck({ deck, setDeck }) {
   const history = useHistory();
+  const { deckId } = useParams();
   
+  useEffect(() => {
+    const abortController = new AbortController();
+    readDeck(deckId, abortController.signal).then(setDeck);
+    return () => abortController.abort();
+  }, [deckId]);
+
   return (
     <div>
       <nav aria-label="breadcrumb">
