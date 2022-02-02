@@ -1,8 +1,18 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { createDeck } from "../utils/api";
 
 function NewDeck() {
   const history = useHistory();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const newDeck = {
+      name: formData.get("name"),
+      description: formData.get("description"),
+    };
+  }
 
   return (
     <div>
@@ -13,9 +23,9 @@ function NewDeck() {
         </ol>
       </nav>
       <h2>Create Deck</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label for="name">Name</label>
+          <label>Name</label>
           <input
             id="name"
             type="text"
@@ -26,7 +36,7 @@ function NewDeck() {
           />
         </div>
         <div className="form-group">
-          <label for="description">Description</label>
+          <label>Description</label>
           <textarea
             id="description"
             name="description"
