@@ -4,11 +4,14 @@ import { readDeck, createCard, updateCard } from "../utils/api";
 
 function CardEdit({ deck, setDeck, isNew }) {
   const history = useHistory();
-  const { deckId } = useParams();
+  const { deckId, cardId } = useParams();
+  const card = {};
 
   useEffect(() => {
     const abortController = new AbortController();
-    readDeck(deckId, abortController.signal).then(setDeck);
+    readDeck(deckId, abortController.signal)
+    .then(setDeck)
+    .then(card = deck.cards.find(card => card.id === cardId));
     return () => abortController.abort();
   }, [deckId, setDeck]);
 
