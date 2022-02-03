@@ -1,9 +1,16 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-import { updateDeck } from "../utils/api";
+import { useHistory, useParams } from "react-router-dom";
+import { readDeck, updateDeck } from "../utils/api";
 
 function CardEdit({ deck, setDeck }) {
   const history = useHistory();
+  const { deckId } = useParams();
+
+  useEffect(() => {
+    const abortController = new AbortController();
+    readDeck(deckId, abortController.signal).then(setDeck);
+    return () => abortController.abort();
+  }, [deckId, setDeck]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
