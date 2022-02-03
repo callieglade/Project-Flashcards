@@ -13,6 +13,15 @@ function Deck({ deck, setDeck }) {
     return () => abortController.abort();
   }, [deckId, setDeck]);
 
+  const handleDeleteDeck = async () => {
+    const abortController = new AbortController();
+    const confirmation = window.confirm("Are you sure?\nThis action cannot be undone.");
+    if(confirmation) {
+      deleteDeck(id, abortController.signal);
+      history.push(`/`);
+    }
+  }
+
   if ( deck.id === 0 ) return <p>Loading...</p>;
   
   const cardList = deck.cards.map((card) => (
@@ -51,6 +60,7 @@ function Deck({ deck, setDeck }) {
           <button 
             type="button" 
             className="btn btn-danger mr-3"
+            onClick={handleDeleteDeck}
             >Delete
           </button>
         </div>
