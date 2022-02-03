@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import Deck from "./Deck";
 import Edit from "./Edit";
 import Study from "../Study";
+import CardEdit from "./CardEdit";
 
 function DeckLayout({ deck, setDeck }) {
   return (
@@ -15,6 +16,12 @@ function DeckLayout({ deck, setDeck }) {
       </Route>
       <Route path={`/decks/:deckId/study`}>
         <Study deck={deck} setDeck={setDeck} />
+      </Route>
+      <Route path={`/decks/:deckId/cards/new`}>
+        <CardEdit deck={deck} setDeck={setDeck} isNew={true} />
+      </Route>
+      <Route path={`/decks/:deckId/cards/:cardId/edit`}>
+        <CardEdit deck={deck} setDeck={setDeck} isNew={false} />
       </Route>
     </Switch>
   );
