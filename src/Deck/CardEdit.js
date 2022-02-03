@@ -29,16 +29,11 @@ function CardEdit({ deck, setDeck, isNew }) {
       front: formData.get("front"),
       back: formData.get("back"),
       deckId: card.deckId,
+      id: card.id,
     };
 
-    if (isNew) {
-      createCard(deck.id, updatedCard, abortController.signal)
-      .then(e.target.reset());
-    } else {
-      updatedCard.id = card.id;
-      updateCard(updatedCard, abortController.signal)
-      .then(history.push(`/decks/${deck.id}`));
-    }
+    updateCard(updatedCard, abortController.signal)
+    .then(history.push(`/decks/${deck.id}`));
   }
 
   return (
