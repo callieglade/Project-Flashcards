@@ -21,7 +21,7 @@ function CardAdd({ deck, setDeck, isNew }) {
     const updatedCard = {
       front: formData.get("front"),
       back: formData.get("back"),
-      deckId: card.deckId,
+      deckId: deck.id,
     };
 
     createCard(deck.id, updatedCard, abortController.signal)
