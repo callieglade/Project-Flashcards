@@ -1,19 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { readDeck, createCard, updateCard } from "../utils/api";
+import { readDeck, readCard, createCard, updateCard } from "../utils/api";
 
 function CardEdit({ deck, setDeck, isNew }) {
+  const [card, setCard] = useState({});
   const history = useHistory();
   const { deckId, cardId } = useParams();
-  let card = {};
 
   useEffect(() => {
     const abortController = new AbortController();
     readDeck(deckId, abortController.signal)
     .then(setDeck)
-    .then(card = deck.cards.find(card => card.id === cardId));
     return () => abortController.abort();
   }, [deckId, setDeck]);
+
+  useEffect(() => {
+    const abortController = new AbortController();
+    readCard(cardId, abortController.signal)
+    .then(setCard);
+  }, [cardId, setCard]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,16 +26,16 @@ function CardEdit({ deck, setDeck, isNew }) {
 
     const formData = new FormData(e.target);
     const updatedCard = {
-      front: formData.get("name"),
-      back: formData.get("description"),
+      front: formData.get("front"),
+      back: formData.get("back"),
       deckId: card.deckId,
     };
 
     if (isNew) {
-      createCard(updateCard, abortController.signal)
+      createCard(deck.id, updatedCard, abortController.signal)
       .then(e.target.reset());
     } else {
-      updateCard.id = card.id;
+      updatedCard.id = card.id;
       updateCard(updatedCard, abortController.signal)
       .then(history.push(`/decks/${deck.id}`));
     }
