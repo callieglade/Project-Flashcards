@@ -9,7 +9,7 @@ function Deck({ deck, setDeck }) {
   
   useEffect(() => {
     const abortController = new AbortController();
-    readDeck(deckId, abortController.signal).then(setDeck).then(console.log(deck));
+    readDeck(deckId, abortController.signal).then(setDeck);
     return () => abortController.abort();
   }, [deckId, setDeck]);
 
@@ -17,7 +17,7 @@ function Deck({ deck, setDeck }) {
     const abortController = new AbortController();
     const confirmation = window.confirm("Are you sure?\nThis action cannot be undone.");
     if(confirmation) {
-      deleteDeck(id, abortController.signal);
+      deleteDeck(deck.id, abortController.signal);
       history.push(`/`);
     }
   }
