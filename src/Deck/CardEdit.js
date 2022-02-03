@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { readDeck, createCard, updateCard } from "../utils/api";
 
 function CardEdit({ deck, setDeck, isNew }) {
   const history = useHistory();
   const { deckId, cardId } = useParams();
-  const card = {};
+  let card = {};
 
   useEffect(() => {
     const abortController = new AbortController();
