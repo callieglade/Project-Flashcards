@@ -18,10 +18,10 @@ function DeckLayout({ deck, setDeck }) {
   return (
     <Switch>
       <Route exact path={`/decks/:deckId`}>
-        <Deck />
+        <Deck deck={deck} />
       </Route>
       <Route path={`/decks/:deckId/edit`}>
-        <Edit />
+        <Edit deck={deck} setDeck={setDeck} />
       </Route>
     </Switch>
   );
