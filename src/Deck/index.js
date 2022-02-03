@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
-import { Switch, Route, useParams } from "react-router-dom";
-import { readDeck } from "../utils/api";
+import React from "react";
+import { Switch, Route } from "react-router-dom";
 import Deck from "./Deck";
 import Edit from "./Edit";
 
