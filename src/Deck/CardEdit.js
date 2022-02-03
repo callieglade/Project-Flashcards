@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { readDeck, updateDeck } from "../utils/api";
 
-function CardEdit({ deck, setDeck }) {
+function CardEdit({ deck, setDeck, isNew }) {
   const history = useHistory();
   const { deckId } = useParams();
 
@@ -34,7 +34,7 @@ function CardEdit({ deck, setDeck }) {
         <ol className="breadcrumb">
           <li className="breadcrumb-item text-primary" onClick={() => history.push(`/`)}>Home</li>
           <li className="breadcrumb-item text-primary" onClick={() => history.push(`/decks/${deck.id}`)}>{deck.name}</li>
-          <li className="breadcrumb-item active">Edit Deck</li>
+          <li className="breadcrumb-item active">{ isNew ? `Add Card` : `Edit Card ${card.id}`}</li>
         </ol>
       </nav>
       <h2>Edit Deck</h2>
@@ -47,7 +47,7 @@ function CardEdit({ deck, setDeck }) {
             name="name"
             className="form-control"
             placeholder="Deck Name"
-            defaultValue={deck.name}
+            defaultValue={ isNew ? `` : card.front }
             required
           />
         </div>
@@ -58,7 +58,7 @@ function CardEdit({ deck, setDeck }) {
             name="description"
             className="form-control"
             placeholder="Brief description of the deck"
-            defaultValue={deck.description}
+            defaultValue={ isNew ? `` : card.back }
             required
           />
         </div>
