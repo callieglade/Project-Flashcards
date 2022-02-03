@@ -63,8 +63,17 @@ function CardEdit({ deck, setDeck, isNew }) {
           />
         </div>
         <div className="row">
-          <button type="button" className="btn btn-secondary m-3" onClick={() => history.push(`/decks/${deck.id}`)}>Cancel</button>
-          <button type="submit" className="btn btn-primary my-3">Submit</button>
+          <button 
+            type="button" 
+            className="btn btn-secondary m-3" 
+            onClick={() => history.push(`/decks/${deck.id}`)}
+            >{ isNew ? `Done` : `Cancel` }
+          </button>
+          <button 
+            type="submit" 
+            className="btn btn-primary my-3"
+            >{ isNew ? `Save` : `Submit` }
+          </button>
         </div>
       </form>
     </div>
