@@ -37,27 +37,27 @@ function CardEdit({ deck, setDeck, isNew }) {
           <li className="breadcrumb-item active">{ isNew ? `Add Card` : `Edit Card ${card.id}`}</li>
         </ol>
       </nav>
-      <h2>Edit Deck</h2>
+      <h2>{deck.name}: { isNew ? `Add Card` : `Edit Card` }</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Name</label>
-          <input
-            id="name"
+          <label>Front</label>
+          <textarea
+            id="front"
             type="text"
-            name="name"
+            name="front"
             className="form-control"
-            placeholder="Deck Name"
+            placeholder="Front side of card"
             defaultValue={ isNew ? `` : card.front }
             required
           />
         </div>
         <div className="form-group">
-          <label>Description</label>
+          <label>Back</label>
           <textarea
-            id="description"
-            name="description"
+            id="back"
+            name="back"
             className="form-control"
-            placeholder="Brief description of the deck"
+            placeholder="Back of the card"
             defaultValue={ isNew ? `` : card.back }
             required
           />
