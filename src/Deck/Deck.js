@@ -55,6 +55,7 @@ function Deck({ deck, setDeck }) {
           <button 
             type="button" 
             className="btn btn-primary mr-3"
+            onClick={() => history.push(`/decks/${deck.id}/cards/new`)}
             >+ Add Cards
           </button>
           <button 
