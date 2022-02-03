@@ -58,7 +58,7 @@ function Edit({ deck, setDeck }) {
         </div>
         <div className="row">
           <button type="button" className="btn btn-secondary m-3" onClick={() => history.push(`/decks/${deck.id}`)}>Cancel</button>
-          <button type="submit" className="btn btn-primary my-3" onClick={handleSubmit}>Submit</button>
+          <button type="submit" className="btn btn-primary my-3">Submit</button>
         </div>
       </form>
     </div>
