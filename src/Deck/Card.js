@@ -1,8 +1,18 @@
 import React from "react";
 import { useHistory } from "react-router";
+import { deleteCard } from "../utils/api";
 
 function Card({ card }) {
   const history = useHistory();
+
+  const handleDeleteCard = async () => {
+    const abortController = new AbortController();
+    const confirmation = window.confirm("Are you sure?\nThis action cannot be undone.");
+    if(confirmation) {
+      deleteCard(card.id, abortController.signal);
+      history.push(`/decks/${card.deckId}`);
+    }
+  }
 
   return (
     <div className="card">
@@ -20,6 +30,7 @@ function Card({ card }) {
         <button 
           type="button"
           className="btn btn-danger"
+          onClick={handleDeleteCard}
           >Delete
         </button>
       </div>
