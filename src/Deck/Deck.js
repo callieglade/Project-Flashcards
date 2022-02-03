@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { readDeck } from "../utils/api";
+import { readDeck, deleteDeck } from "../utils/api";
 import Card from "./Card";
 
 function Deck({ deck, setDeck }) {
