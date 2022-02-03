@@ -5,20 +5,10 @@ import Deck from "./Deck";
 import Edit from "./Edit";
 
 function DeckLayout({ deck, setDeck }) {
-  const { deckId } = useParams();
-  
-  useEffect(() => {
-    const abortController = new AbortController();
-    readDeck(deckId, abortController.signal).then(setDeck);
-    return () => abortController.abort();
-  }, [deckId, setDeck]);
-
-  if ( deck.id === 0 ) return <p>Loading...</p>;
-  
   return (
     <Switch>
       <Route exact path={`/decks/:deckId`}>
-        <Deck deck={deck} />
+        <Deck deck={deck} setDeck={setDeck} />
       </Route>
       <Route path={`/decks/:deckId/edit`}>
         <Edit deck={deck} setDeck={setDeck} />

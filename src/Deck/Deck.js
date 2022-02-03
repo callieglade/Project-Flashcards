@@ -1,9 +1,20 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { readDeck } from "../utils/api";
 import Card from "./Card";
 
-function Deck({ deck }) {
+function Deck({ deck, setDeck }) {
   const history = useHistory();
+  const { deckId } = useParams();
+  
+  useEffect(() => {
+    const abortController = new AbortController();
+    readDeck(deckId, abortController.signal).then(setDeck).then(console.log(deck));
+    return () => abortController.abort();
+  }, [deckId, setDeck]);
+
+  if ( deck.id === 0 ) return <p>Loading...</p>;
+  
   const cardList = deck.cards.map((card) => (
     <Card key={card.id} card={card} />
   ));

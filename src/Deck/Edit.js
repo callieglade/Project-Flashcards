@@ -13,13 +13,12 @@ function Edit({ deck, setDeck }) {
     const updatedDeck = {
       name: formData.get("name"),
       description: formData.get("description"),
+      id: deck.id,
+      cards: deck.cards
     };
 
     updateDeck(updatedDeck, abortController.signal)
-    .then((deck) => {
-      setDeck(deck);
-      history.push(`/decks/${deck.id}`);
-    });
+    .then(history.push(`/decks/${deck.id}`));
   }
 
   return (
