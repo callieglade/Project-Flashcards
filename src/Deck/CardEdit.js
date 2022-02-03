@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { readDeck, updateDeck } from "../utils/api";
+import { readDeck, createCard, updateCard } from "../utils/api";
 
 function CardEdit({ deck, setDeck, isNew }) {
   const history = useHistory();
@@ -17,15 +17,20 @@ function CardEdit({ deck, setDeck, isNew }) {
     const abortController = new AbortController();
 
     const formData = new FormData(e.target);
-    const updatedDeck = {
-      name: formData.get("name"),
-      description: formData.get("description"),
-      id: deck.id,
-      cards: deck.cards
+    const updatedCard = {
+      front: formData.get("name"),
+      back: formData.get("description"),
+      deckId: card.deckId,
     };
 
-    updateDeck(updatedDeck, abortController.signal)
-    .then(history.push(`/decks/${deck.id}`));
+    if (isNew) {
+      createCard(updateCard, abortController.signal)
+      .then(e.target.reset());
+    } else {
+      updateCard.id = card.id;
+      updateCard(updatedCard, abortController.signal)
+      .then(history.push(`/decks/${deck.id}`));
+    }
   }
 
   return (
