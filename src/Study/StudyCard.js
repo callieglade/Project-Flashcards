@@ -27,10 +27,11 @@ function StudyCard({ deck }) {
       </div>
     );
   } else {
+    const cardPos = cards[0].id - 1; // used to make card.id relative to the deck
     return (
       <div className="card">
         <div className="card-body">
-          <h4 className="card-title">Card {card.id} of {cards.length}</h4>
+          <h4 className="card-title">Card {card.id - cardPos} of {cards.length}</h4>
           <div className="card-text">{isFlipped ? card.back : card.front}</div>
           <div className="row">
             <button 
