@@ -1,17 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { readDeck, deleteDeck } from "../utils/api";
 import Card from "./Card";
 
 function Deck({ deck, setDeck }) {
+  const [deckUpToDate, setDeckUpToDate] = useState(false);
   const history = useHistory();
   const { deckId } = useParams();
   
   useEffect(() => {
-    const abortController = new AbortController();
-    readDeck(deckId, abortController.signal).then(setDeck);
-    return () => abortController.abort();
-  }, [deckId, setDeck]);
+    if (!deckUpToDate) {
+      const abortController = new AbortController();
+      readDeck(deckId, abortController.signal)
+      .then(setDeck)
+      .then((current) => setDeckUpToDate(!current));
+      return () => abortController.abort();
+    }
+  }, [deckId, setDeck, deckUpToDate]);
 
   const handleDeleteDeck = async () => {
     const abortController = new AbortController();
@@ -21,6 +26,7 @@ function Deck({ deck, setDeck }) {
       history.push(`/`);
     }
   }
+  console.log(`Post-fetch: `, deckUpToDate, deck)
   
   if (deck.id) {
     return (
@@ -63,7 +69,7 @@ function Deck({ deck, setDeck }) {
           <h2 className="my-4">Cards</h2>
           <div>
             {deck.cards.map((card) => (
-              <Card key={card.id} card={card} />
+              <Card key={card.id} card={card} setDeckUpToDate={setDeckUpToDate} />
             ))}
           </div>
         </div>

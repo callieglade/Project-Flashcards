@@ -2,14 +2,15 @@ import React from "react";
 import { useHistory } from "react-router";
 import { deleteCard } from "../utils/api";
 
-function Card({ card }) {
+function Card({ card, setDeckUpToDate }) {
   const history = useHistory();
 
   const handleDeleteCard = async () => {
     const abortController = new AbortController();
     const confirmation = window.confirm("Are you sure?\nThis action cannot be undone.");
     if(confirmation) {
-      deleteCard(card.id, abortController.signal);
+      deleteCard(card.id, abortController.signal)
+      .then(setDeckUpToDate(false));
     }
   }
 
