@@ -9,9 +9,7 @@ function Card({ card }) {
     const abortController = new AbortController();
     const confirmation = window.confirm("Are you sure?\nThis action cannot be undone.");
     if(confirmation) {
-      const cardId = card.deckId;
       deleteCard(card.id, abortController.signal);
-      history.push(`/decks/${cardId}`);
     }
   }
 

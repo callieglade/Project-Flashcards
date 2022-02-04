@@ -40,29 +40,29 @@ function Deck({ deck, setDeck }) {
         <h3>{deck.name}</h3>
         <p>{deck.description}</p>
         <div className="row">
-          <button 
-            type="button" 
-            className="btn btn-secondary mx-3"
-            onClick={() => history.push(`/decks/${deck.id}/edit`)}
-            >Edit
-          </button>
-          <button 
-            type="button" 
-            className="btn btn-primary mr-3"
-            onClick={() => history.push(`/decks/${deck.id}/study`)}
-            >Study
-          </button>
-          <button 
-            type="button" 
-            className="btn btn-primary mr-3"
-            onClick={() => history.push(`/decks/${deck.id}/cards/new`)}
-            >+ Add Cards
-          </button>
-          <button 
-            type="button" 
-            className="btn btn-danger mr-3"
-            onClick={handleDeleteDeck}
-            >Delete
+            <button 
+              type="button" 
+              className="btn btn-secondary mx-3"
+              onClick={() => history.push(`/decks/${deck.id}/edit`)}
+              >Edit
+            </button>
+            <button
+              type="button" 
+              className="btn btn-primary mr-3"
+              onClick={() => history.push(`/decks/${deck.id}/study`)}
+              >Study
+            </button>
+            <button 
+              type="button" 
+              className="btn btn-primary mr-3"
+              onClick={() => history.push(`/decks/${deck.id}/cards/new`)}
+              >+ Add Cards
+            </button>
+            <button  
+              type="button" 
+              className="btn btn-danger mr-3"
+              onClick={handleDeleteDeck}
+              >Delete
           </button>
         </div>
         <h2 className="my-4">Cards</h2>
