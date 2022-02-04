@@ -4,11 +4,10 @@ import Header from "./Header";
 import Home from "./Home";
 import DeckLayout from "../Deck";
 import NewDeck from "../NewDeck";
-import Study from "../Study";
 import NotFound from "./NotFound";
 
 function Layout() {
-  const [deck, setDeck] = useState({id: 0});
+  const [deck, setDeck] = useState({});
 
   return (
     <>
@@ -24,9 +23,6 @@ function Layout() {
           </Route>
           <Route path={`/decks/:deckId`}>
             <DeckLayout deck={deck} setDeck={setDeck} />
-          </Route>
-          <Route path={`/decks/:deckId/study`}>
-            <Study deck={deck} setDeck={setDeck} />
           </Route>
           <Route>
             <NotFound />
