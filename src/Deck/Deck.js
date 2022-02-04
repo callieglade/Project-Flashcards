@@ -26,7 +26,6 @@ function Deck({ deck, setDeck }) {
       history.push(`/`);
     }
   }
-  console.log(`Post-fetch: `, deckUpToDate, deck)
   
   if (deck.id) {
     return (
