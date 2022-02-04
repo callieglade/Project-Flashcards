@@ -18,6 +18,19 @@ function StudyCard({ deck }) {
     } 
   }
 
+  let nextBtn = "";
+  if (isFlipped) {
+    nextBtn = (
+      <button 
+        type="button"
+        className="btn btn-primary my-3"
+        hidden={!isFlipped}
+        onClick={handleNext}
+        >Next
+      </button>
+    )
+  }
+
   if (cards.length <= 2) {
     return (
       <div>
@@ -40,13 +53,7 @@ function StudyCard({ deck }) {
               onClick={() => setFlipped(!isFlipped)}
               >Flip
             </button>
-            <button 
-              type="button"
-              className="btn btn-primary my-3"
-              hidden={!isFlipped}
-              onClick={handleNext}
-              >Next
-            </button>
+            {nextBtn}
           </div>
         </div>
       </div>
